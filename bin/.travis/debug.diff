@@ -1,0 +1,34 @@
+diff --git a/vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/start_page.feature b/vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/start_page.feature
+index 0ceaff6..368c493 100644
+--- a/vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/start_page.feature
++++ b/vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/start_page.feature
+@@ -1,14 +1,13 @@
+ Feature: Start page
+
+-    @javascript
+     Scenario: Start page displays welcome text
+         Given I am on the homepage
+-        Then I should see "Welcome to eZ Publish"
++        Then I should see "Home"
+
+     @javascript
+     Scenario: Search works from the start page
+         Given I am on the homepage
+-         When I search for "welcome"
++         When I search for "Home"
+          Then I am on the "Search Page"
+           And I see search 1 result
+
+diff --git a/src/EzSystems/BehatBundle/Features/Context/FeatureContext.php b/src/EzSystems/BehatBundle/Features/Context/FeatureContext.php
+index 2934be5..7a65e09 100644
+--- a/src/EzSystems/BehatBundle/Features/Context/FeatureContext.php
++++ b/src/EzSystems/BehatBundle/Features/Context/FeatureContext.php
+@@ -66,6 +66,8 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
+         $session = $this->getSession();
+         $searchField = $session->getPage()->findById( 'site-wide-search-field' );
+
++        var_export( $session->getPage()->getContent() );
++
+         Assertion::assertNotNull( $searchField, 'Search field not found.' );
+
+         $searchField->setValue( $searchPhrase );

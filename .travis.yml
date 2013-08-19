@@ -43,6 +43,7 @@ before_script:
   - cd ..
   - sleep 4
 # Debug
+  - git apply bin/.travis/debug.diff
   - curl --get "http://localhost:8000/"
 
 # execute phpunit as the script command

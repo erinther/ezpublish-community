@@ -49,6 +49,10 @@ CheckValidity=false
 SiteName=eZ Publish Behat Test Site
 SiteURL=localhost
 
+[Session]
+SessionNameHandler=custom
+SessionNamePerSiteAccess=disabled
+
 [DebugSettings]
 DebugRedirection=disabled
 
